@@ -6,6 +6,11 @@ from discord.ext import commands
 from dotenv import load_dotenv
 import random
 
+#new test dependencies 
+import requests
+import json
+
+
 load_dotenv()
 #TOKEN = os.getenv('DISCORD_TOKEN')# IT SHOULD BE WORKING USING THIS IN THE FUTUTRE
 TOKEN = os.getenv('DISCORD_TOKEN')
@@ -34,6 +39,13 @@ bot = commands.Bot(command_prefix = 'm!')
 async def mines(ctx):
     if ctx.author == bot.user:
         return
+    
+    #new test stuff
+    if ctx.message.content.startswith('m!minesweeper test'):
+        msg=ctx.message.content[18:]
+        await ctx.send(msg[::-1])
+        #await ctx.send(ctx.message.content[::-1])
+    
     if ctx.message.content == 'm!minesweeper easy':
         bomb_array = [0] * 81
         bomb_array[0:10] = [9]*10
